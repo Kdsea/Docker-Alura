@@ -1,0 +1,14 @@
+
+
+services: # Serviço único para sua aplicação
+  
+  app:
+    build: . # Constrói a imagem a partir do Dockerfile no diretório atual (.)
+    container_name: gestao-escolar-api # Nome do contêiner para facilitar a identificação
+    restart: unless-stopped # Reinicia o contêiner automaticamente em caso de falha
+    ports:
+      - "8000:8000"
+    # Monta o diretório atual no diretório /app do contêiner
+    # Suas alterações no código são refletidas instantaneamente, funcionando bem com o --reload do Uvicorn
+    volumes:
+      - .:/app
